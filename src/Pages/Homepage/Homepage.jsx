@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './homepage.css'
 
 const Homepage = () => {
   const [plaintext, setPlaintext] = useState('');
