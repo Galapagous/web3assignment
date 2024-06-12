@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import "./homepage.css"
 
 const Homepage = () => {
   const [plaintext, setPlaintext] = useState('');
@@ -32,7 +31,6 @@ const decrypt = (text, shift) => {
   };
 
   const handleEncrypt = () => {
-    
     const shift = parseInt(key, 10);
     setCiphertext(encrypt(plaintext, shift));
   };
