@@ -4,9 +4,11 @@ const Homepage = () => {
   const [plaintext, setPlaintext] = useState('');
   const [ciphertext, setCiphertext] = useState('');
   const [key, setKey] = useState('');
+  const [error, setError]  = useState(false)
 
   // Function to encrypt plaintext using Caesar Cipher
   const encrypt = (text, shift) => {
+    setError(false)
     let result = '';
     for (let i = 0; i < text.length; i++) {
       let char = text[i];
@@ -20,6 +22,8 @@ const Homepage = () => {
         else if (code >= 97 && code <= 122) {
           char = String.fromCharCode(((code - 97 + shift) % 26) + 97);
         }
+      }else{
+        setError(true)
       }
       result += char;
     }
@@ -61,6 +65,7 @@ const decrypt = (text, shift) => {
           onChange={(e) => setKey(e.target.value)}
         />
       </div>
+      {error && <span className='error'>kindly provide only letters</span>}
       <button onClick={handleEncrypt}>Encrypt</button>
       <div className="input-section">
         <label htmlFor="ciphertext">Ciphertext:</label>
